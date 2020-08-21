@@ -11,9 +11,10 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+import Footer from "./footer"
 
-interface Props{
-  children?:any
+interface Props {
+  children?: any
 }
 
 const Layout = ({ children }: Props) => {
@@ -28,8 +29,9 @@ const Layout = ({ children }: Props) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+    <React.Fragment>
+      {/* <CssBaseline /> */}
+      <Header />
       <div
         style={{
           margin: `0 auto`,
@@ -38,13 +40,9 @@ const Layout = ({ children }: Props) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Footer />
       </div>
-    </>
+    </React.Fragment>
   )
 }
 
