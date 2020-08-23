@@ -4,12 +4,67 @@ import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
+import Image from "./image"
 
 const Services = () => {
+  let services = [
+    {
+      id: 1,
+      image: "search-doctor-icon.png",
+      title: "Search Doctor",
+      description:
+        "Choose your doctor from thousands of specialist, general, and trusted hospitals.",
+    },
+    {
+      id: 2,
+      image: "online-pharmacy-icon.png",
+      title: "Online Pharmacy",
+      description:
+        "Buy your medicines with our mobile application with a simple delivery system.",
+    },
+    {
+      id: 3,
+      image: "consultation-icon.png",
+      title: "Consultation",
+      description:
+        "Free consultation with our trusted doctors and get the best recommendations.",
+    },
+    {
+      id: 4,
+      image: "details-info-icon.png",
+      title: "Detail Info",
+      description:
+        "Free consultation with our trusted doctors and get the best recommendations.",
+    },
+    {
+      id: 5,
+      image: "emergency-care-icon.png",
+      title: "Emergency Care",
+      description:
+        "You can get 24/7 urgent care for yourself or your children and your lovely family.",
+    },
+    {
+      id: 6,
+      image: "tracking-icon.png",
+      title: "Tracking",
+      description: "Track and save your medical history and health data.",
+    },
+  ]
+
   return (
-    <Grid container spacing={3} style={{ textAlign: "center" }}>
+    <Grid
+      container
+      spacing={3}
+      style={{
+        textAlign: "center",
+        minHeight: 200,
+        padding: 10,
+      }}
+    >
       <Grid item xs={12}>
-        <Typography variant="h5">Our Services</Typography>
+        <Typography variant="h5" style={{ margin: 40 }}>
+          Our Services
+        </Typography>
         <Typography variant="subtitle1">
           We provide to you the best choices for you. Adjust it to your health
           needs and make sure your undergo treatment with our highly qualified
@@ -17,89 +72,25 @@ const Services = () => {
           your health
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={4}>
-        <Card style={{ borderRadius: 20 }}>
-          <CardContent>
-            <Typography variant="h6" color="inherit" noWrap>
-              Search Doctor
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Choose your doctor from thousands of specialist, general, and
-              trusted hospitals
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <Card>
-          <CardContent>
-            <Typography variant="h6" color="inherit" noWrap>
-              Online Pharmacy
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              This impressive paella is a perfect party dish and a fun meal to
-              cook together with your guests. Add 1 cup of frozen peas along
-              with the mussels, if you like.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <Card>
-          <CardContent>
-            <Typography variant="h6" color="inherit" noWrap>
-              Consultation
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              This impressive paella is a perfect party dish and a fun meal to
-              cook together with your guests. Add 1 cup of frozen peas along
-              with the mussels, if you like.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <Card>
-          <CardContent>
-            <Typography variant="h6" color="inherit" noWrap>
-              Detail Info
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              This impressive paella is a perfect party dish and a fun meal to
-              cook together with your guests. Add 1 cup of frozen peas along
-              with the mussels, if you like.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <Card>
-          <CardContent>
-            <Typography variant="h6" color="inherit" noWrap>
-              Emergency Care
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              This impressive paella is a perfect party dish and a fun meal to
-              cook together with your guests. Add 1 cup of frozen peas along
-              with the mussels, if you like.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <Card>
-          <CardContent>
-            <Typography variant="h6" color="inherit" noWrap>
-              Tracking
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              This impressive paella is a perfect party dish and a fun meal to
-              cook together with your guests. Add 1 cup of frozen peas along
-              with the mussels, if you like.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
+
+      {services.map(service => (
+        <Grid item xs={12} sm={4} key={service.id}>
+          <Card>
+            <CardContent style={{ textAlign: "start" }}>
+              <div style={{ width: 80, padding: 10 }}>
+                <Image alt={service.title} filename={service.image} />
+              </div>
+              <Typography variant="h6" color="inherit">
+                {service.title}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {service.description}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+
       <Grid item xs={12}>
         <Button variant="outlined" color="primary" size="large">
           Learn More

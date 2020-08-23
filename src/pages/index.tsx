@@ -1,22 +1,30 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import Hero from "../components/hero"
+import Services from "../components/services"
+import AboutPanel from "../components/about-panel"
+import Testimonials from "../components/testimonials"
+import Articles from "../components/articles"
+import ThemeProvider from "@material-ui/styles/ThemeProvider"
+import theme from "../theme"
+import AppsPanel from "../components/apps-panel"
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
+  <React.Fragment>
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <SEO title="Home" />
+        <Hero />
+        <Services />
+        <AboutPanel />
+        <AppsPanel />
+        <Testimonials />
+        <Articles />
+      </Layout>
+    </ThemeProvider>
+  </React.Fragment>
 )
 
 export default IndexPage

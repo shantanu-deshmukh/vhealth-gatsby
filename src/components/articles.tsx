@@ -5,11 +5,12 @@ import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 
+//TODO: load articles from array dynamically
 const Articles = () => {
   return (
     <Grid container spacing={3} style={{ textAlign: "center" }}>
       <Grid item xs={12}>
-        Check out our latest article
+        <Typography variant="h5">Check out our latest articles</Typography>
       </Grid>
       <Grid item xs={12} sm={4}>
         <Card style={{ borderRadius: 20 }}>
