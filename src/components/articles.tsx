@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 import ArticleCard from "./article-card"
+import Bar from "./bar"
 
 const Articles = () => {
   const articles = [
@@ -40,6 +41,7 @@ const Articles = () => {
         alignItems="center"
       >
         <Typography variant="h5">Check out our latest articles</Typography>
+        <Bar />
       </Grid>
       {articles.map(article => (
         <Grid item xs={12} sm={4}>

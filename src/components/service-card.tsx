@@ -17,7 +17,7 @@ interface Service {
 const ServiceCard = ({ service, ...props }: IProps) => {
   return (
     <Card>
-      <CardContent style={{ textAlign: "start" }}>
+      <CardContent style={{ textAlign: "start", minHeight: 200 }}>
         <div style={{ width: 80, padding: 10 }}>
           <Image alt={service.title} filename={service.image} />
         </div>

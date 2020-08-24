@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button"
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward"
 import Image from "./image"
 import Hidden from "@material-ui/core/Hidden"
+import Bar from "./bar"
 
 const AppsPanel = () => {
   return (
@@ -17,13 +18,16 @@ const AppsPanel = () => {
         direction="column"
         justify="center"
         alignItems="flex-start"
-        style={{ padding: 10 }}
+        style={{ paddingLeft: 40, paddingRight: 40 }}
       >
-        <Typography variant="h4" color="inherit" style={{ marginBottom: 20 }}>
+        <Typography variant="h4" color="inherit">
           Download our mobile apps
         </Typography>
-
-        <Typography variant="subtitle1" style={{ marginBottom: 30 }}>
+        <Bar />
+        <Typography
+          variant="subtitle1"
+          style={{ marginBottom: 30, marginTop: 20 }}
+        >
           Our dedicated patient engagement app and web portal allow you to
           access information instantaneously (no tedious form, long calls, or
           administrative hassle) and securely

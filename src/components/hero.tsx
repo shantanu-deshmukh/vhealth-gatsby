@@ -16,7 +16,7 @@ const Hero = () => {
         direction="column"
         justify="center"
         alignItems="flex-start"
-        style={{ padding: 10 }}
+        style={{ paddingLeft: 40, paddingRight: 40 }}
       >
         <Typography variant="h4" color="inherit" style={{ marginBottom: 20 }}>
           Virtual Healthcare for you

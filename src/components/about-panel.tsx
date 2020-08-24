@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 import Image from "./image"
 import Hidden from "@material-ui/core/Hidden"
+import Bar from "./bar"
 
 const AboutPanel = () => {
   return (
@@ -34,13 +35,16 @@ const AboutPanel = () => {
         direction="column"
         justify="center"
         alignItems="flex-start"
-        style={{ padding: 10 }}
+        style={{ paddingLeft: 40, paddingRight: 40 }}
       >
-        <Typography variant="h4" color="inherit" style={{ marginBottom: 20 }}>
+        <Typography variant="h4" color="inherit">
           Leading healthcare providers
         </Typography>
-
-        <Typography variant="subtitle1" style={{ marginBottom: 30 }}>
+        <Bar />
+        <Typography
+          variant="subtitle1"
+          style={{ marginBottom: 30, marginTop: 20 }}
+        >
           We provide progressive, and affordable healthcare, accessible on
           mobile and online for everyone. To us, it’s not just work. We take
           pride in the solutions we deliver

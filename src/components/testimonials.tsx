@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid"
 const Testimonials = () => {
   return (
     <Grid container spacing={3} style={{ minHeight: 200 }}>
-      {/* TESTIMONIALS STEPPER TO BE ADDED HERE */}
+      {/* TODO: TESTIMONIALS STEPPER TO BE ADDED HERE */}
     </Grid>
   )
 }
