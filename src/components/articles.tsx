@@ -15,7 +15,7 @@ const Articles = () => {
       <Grid item xs={12} sm={4}>
         <Card style={{ borderRadius: 20 }}>
           <CardContent>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography variant="h6" color="inherit">
               Search Doctor
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
@@ -28,7 +28,7 @@ const Articles = () => {
       <Grid item xs={12} sm={4}>
         <Card>
           <CardContent>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography variant="h6" color="inherit">
               Online Pharmacy
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
@@ -42,7 +42,7 @@ const Articles = () => {
       <Grid item xs={12} sm={4}>
         <Card>
           <CardContent>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography variant="h6" color="inherit">
               Consultation
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">

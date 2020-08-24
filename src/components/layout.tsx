@@ -40,8 +40,8 @@ const Layout = ({ children }: Props) => {
         }}
       >
         <main>{children}</main>
-        <Footer />
       </div>
+      <Footer />
     </React.Fragment>
   )
 }
