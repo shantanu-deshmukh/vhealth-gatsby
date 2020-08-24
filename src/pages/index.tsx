@@ -20,7 +20,7 @@ const IndexPage = () => (
         <Services />
         <AboutPanel />
         <AppsPanel />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Articles />
       </Layout>
     </ThemeProvider>

@@ -19,7 +19,10 @@ const AboutPanel = () => {
           style={{ padding: 10 }}
         >
           <div style={{ width: "100%" }}>
-            <Image alt="Virtual Healthcare for you" filename="hero-image.png" />
+            <Image
+              alt="Virtual Healthcare for you"
+              filename="about-illustration.png"
+            />
           </div>
         </Grid>
       </Hidden>

@@ -5,6 +5,7 @@ import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 import Image from "./image"
+import ServiceCard from "./service-card"
 
 const Services = () => {
   let services = [
@@ -75,19 +76,7 @@ const Services = () => {
 
       {services.map(service => (
         <Grid item xs={12} sm={4} key={service.id}>
-          <Card>
-            <CardContent style={{ textAlign: "start" }}>
-              <div style={{ width: 80, padding: 10 }}>
-                <Image alt={service.title} filename={service.image} />
-              </div>
-              <Typography variant="h6" color="inherit">
-                {service.title}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {service.description}
-              </Typography>
-            </CardContent>
-          </Card>
+          <ServiceCard service={service} />
         </Grid>
       ))}
 
