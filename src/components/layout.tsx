@@ -12,6 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 import Footer from "./footer"
+import Box from "@material-ui/core/Box"
 
 interface Props {
   children?: any
@@ -30,17 +31,16 @@ const Layout = ({ children }: Props) => {
 
   return (
     <React.Fragment>
-      {/* <CssBaseline /> */}
       <Header />
-      <div
+      <Box
         style={{
           margin: `0 auto`,
           maxWidth: 960,
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
-        <main>{children}</main>
-      </div>
+        {children}
+      </Box>
       <Footer />
     </React.Fragment>
   )
