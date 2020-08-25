@@ -44,7 +44,7 @@ const Articles = () => {
         <Bar />
       </Grid>
       {articles.map(article => (
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={4} key={article.title}>
           <ArticleCard article={article} />
         </Grid>
       ))}

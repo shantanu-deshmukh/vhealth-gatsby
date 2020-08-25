@@ -82,12 +82,13 @@ const Footer = () => {
                 container
                 direction="column"
                 justify="space-evenly"
+                key={footerMenu.title}
               >
                 <Typography variant="subtitle1" color="inherit">
                   {footerMenu.title}
                 </Typography>
                 {footerMenu.items.map(link => (
-                  <Link color="inherit" variant="body2">
+                  <Link color="inherit" variant="body2" key={link.displayText}>
                     {link.displayText}
                   </Link>
                 ))}

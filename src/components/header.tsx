@@ -81,7 +81,9 @@ const Header = ({ companyName }: Props) => {
 
           <Hidden xsDown>
             {navLinks.map(item => (
-              <Button color="inherit">{item.displayText}</Button>
+              <Button color="inherit" key={item.displayText}>
+                {item.displayText}
+              </Button>
             ))}
           </Hidden>
         </Toolbar>
