@@ -2,36 +2,40 @@ import React from "react"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import Box from "@material-ui/core/Box"
-import Link from "@material-ui/core/Link"
 import Hidden from "@material-ui/core/Hidden"
+import Link from "@material-ui/core/Link"
+import FabDownload from "./fab-download"
 
 const Footer = () => {
   const footerLinks = [
     {
       title: "Company",
       items: [
-        { displayText: "About", link: "" },
-        { displayText: "Testimonials", link: "" },
-        { displayText: "Find a Doctor", link: "" },
-        { displayText: "Apps", link: "" },
+        { displayText: "About", url: "" },
+        {
+          displayText: "Testimonials",
+          url: "",
+        },
+        { displayText: "Find a Doctor", url: "" },
+        { displayText: "Apps", url: "" },
       ],
     },
     {
       title: "Region",
       items: [
-        { displayText: "India", link: "" },
-        { displayText: "Indonesia", link: "" },
-        { displayText: "Singapore", link: "" },
-        { displayText: "Canada", link: "" },
+        { displayText: "India", url: "" },
+        { displayText: "Indonesia", url: "" },
+        { displayText: "Singapore", url: "" },
+        { displayText: "Canada", url: "" },
       ],
     },
     {
       title: "Help",
       items: [
-        { displayText: "Help Center", link: "" },
-        { displayText: "Contact Support", link: "" },
-        { displayText: "Instructions", link: "" },
-        { displayText: "How it works", link: "" },
+        { displayText: "Help Center", url: "" },
+        { displayText: "Contact Support", url: "" },
+        { displayText: "Instructions", url: "" },
+        { displayText: "How it works", url: "" },
       ],
     },
   ]
@@ -41,7 +45,6 @@ const Footer = () => {
       <Box className="footer">
         <Grid
           container
-          spacing={4}
           style={{
             margin: `0 auto`,
             maxWidth: 960,
@@ -56,6 +59,7 @@ const Footer = () => {
             container
             direction="column"
             justify="space-evenly"
+            style={{ padding: 10 }}
           >
             <Typography variant="h4" color="inherit">
               vHealth
@@ -107,12 +111,27 @@ const Footer = () => {
           alignItems="center"
         >
           <Typography variant="body2" color="inherit">
-            Created by Shantanu Deshmukh
+            Created by{" "}
+            <a
+              href="https://shantanudeshmukh.com/"
+              target="_blank"
+              style={{ color: "#FFF" }}
+            >
+              Shantanu Deshmukh
+            </a>
           </Typography>
           <Typography variant="body2" color="inherit">
-            Designed by Slab Studio
+            Designed by
+            <a
+              href="https://dribbble.com/slabdsgn"
+              target="_blank"
+              style={{ color: "#FFF", margin: 5 }}
+            >
+              SLAB Design Studio
+            </a>
           </Typography>
         </Grid>
+        <FabDownload />
       </Box>
     </React.Fragment>
   )
