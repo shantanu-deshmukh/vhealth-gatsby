@@ -55,8 +55,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Full-stack developer with experience in building complete Web & mobile apps from scratch.
 
-[ I'm looking for a full-time remote position. If you are looking for a developer who can get stuff done, feel free to reach out at [Linkedin](https://www.linkedin.com/in/shantanud/)
-/ [Twitter](https://twitter.com/askshantanu) / [AngelList](https://angel.co/u/dshantanu)]
+[Linkedin](https://www.linkedin.com/in/shantanud/)
+/ [Twitter](https://twitter.com/askshantanu) / [AngelList](https://angel.co/u/dshantanu)
 
 ## 💜 Thanks
 
