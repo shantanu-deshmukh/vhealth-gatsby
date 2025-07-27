@@ -1,6 +1,5 @@
 import React from "react"
 import Card from "@mui/material/Card"
-import CardMedia from "@mui/material/CardMedia"
 import CardContent from "@mui/material/CardContent"
 import Typography from "@mui/material/Typography"
 import CardActions from "@mui/material/CardActions"
@@ -28,9 +27,9 @@ const ArticleCard = ({ article, ...props }: IProps) => {
 
   return (
     <Card>
-      <CardMedia image={article.image}>
+      <div style={{ height: 200, overflow: "hidden" }}>
         <Image alt={article.title} filename={article.image} />
-      </CardMedia>
+      </div>
       <CardContent style={{ textAlign: "start" }}>
         <Typography variant="h6" color="inherit">
           {article.title}
