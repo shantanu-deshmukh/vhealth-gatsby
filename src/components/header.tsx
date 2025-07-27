@@ -1,51 +1,78 @@
 import PropTypes from "prop-types"
 import React from "react"
 
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
-import Button from "@material-ui/core/Button"
-import { makeStyles } from "@material-ui/core/styles"
-import IconButton from "@material-ui/core/IconButton"
-import MenuIcon from "@material-ui/icons/Menu"
-import Hidden from "@material-ui/core/Hidden"
-import Drawer from "@material-ui/core/Drawer"
-import ListItem from "@material-ui/core/ListItem"
-import ListItemText from "@material-ui/core/ListItemText"
-import List from "@material-ui/core/List"
+import AppBar from "@mui/material/AppBar"
+import Toolbar from "@mui/material/Toolbar"
+import Typography from "@mui/material/Typography"
+import Button from "@mui/material/Button"
+import { styled } from "@mui/material/styles"
+import IconButton from "@mui/material/IconButton"
+import MenuIcon from "@mui/icons-material/Menu"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import { useTheme } from "@mui/material/styles"
+import Drawer from "@mui/material/Drawer"
+import ListItem from "@mui/material/ListItem"
+import ListItemText from "@mui/material/ListItemText"
+import List from "@mui/material/List"
 
 interface Props {
   companyName: string
 }
 
-const useStyles = makeStyles(theme => ({
-  appBar: {
-    color: "#233348",
-    backgroundColor: "#FFF",
-  },
-  toolbar: {
-    flexWrap: "wrap",
-  },
-  toolbarTitle: {
-    flexGrow: 1,
-  },
-  drawerList: {
-    width: 250,
-  },
-  drawerToggle: {
-    padding: 20,
-  },
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  color: "#233348",
+  backgroundColor: "#FFF",
 }))
 
+const StyledToolbar = styled(Toolbar)({
+  flexWrap: "wrap",
+})
+
+const ToolbarTitle = styled(Typography)({
+  flexGrow: 1,
+})
+
+const StyledDrawerList = styled(List)({
+  width: 250,
+})
+
+const DrawerToggle = styled(IconButton)({
+  padding: 20,
+})
+
 const Header = ({ companyName }: Props) => {
-  const classes = useStyles()
   const [open, setOpen] = React.useState(false)
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
   const handleDrawerOpen = () => {
     setOpen(true)
   }
   const handleDrawerClose = () => {
     setOpen(false)
+  }
+
+  const handleNavigation = (link: string) => {
+    console.log(`Navigating to: ${link}`)
+    // Close drawer if open
+    setOpen(false)
+
+    // Handle navigation logic
+    if (link === "#" || link === "") {
+      // Scroll to top for home link
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    } else if (link.startsWith("#")) {
+      // Remove the # for querySelector
+      const selector = link.substring(1)
+      if (selector) {
+        const element = document.getElementById(selector)
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+        } else {
+          console.warn(`Element with id "${selector}" not found`)
+        }
+      }
+    }
   }
 
   const navLinks = [
@@ -58,53 +85,57 @@ const Header = ({ companyName }: Props) => {
 
   return (
     <React.Fragment>
-      <AppBar position="static" elevation={0} className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-          <Hidden smUp>
-            <IconButton
-              className={classes.drawerToggle}
+      <StyledAppBar position="static" elevation={0}>
+        <StyledToolbar>
+          {isMobile && (
+            <DrawerToggle
               color="inherit"
               aria-label="open drawer"
               onClick={handleDrawerOpen}
               edge="start"
             >
               <MenuIcon />
-            </IconButton>
-          </Hidden>
-          <Typography
-            variant="h6"
-            color="inherit"
-            className={classes.toolbarTitle}
-          >
+            </DrawerToggle>
+          )}
+          <ToolbarTitle variant="h6" color="inherit">
             vHealth
-          </Typography>
+          </ToolbarTitle>
 
-          <Hidden xsDown>
-            {navLinks.map(item => (
-              <Button color="inherit" key={item.displayText}>
-                {item.displayText}
-              </Button>
-            ))}
-          </Hidden>
-        </Toolbar>
-      </AppBar>
+          {!isMobile && (
+            <>
+              {navLinks.map(item => (
+                <Button
+                  color="inherit"
+                  key={item.displayText}
+                  onClick={() => handleNavigation(item.link)}
+                >
+                  {item.displayText}
+                </Button>
+              ))}
+            </>
+          )}
+        </StyledToolbar>
+      </StyledAppBar>
       <Drawer
         variant="temporary"
         anchor="left"
         open={open}
-        onEscapeKeyDown={handleDrawerClose}
-        onBackdropClick={handleDrawerClose}
+        onClose={handleDrawerClose}
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
         }}
       >
-        <List className={classes.drawerList}>
+        <StyledDrawerList>
           {navLinks.map((item, index) => (
-            <ListItem button key={item.displayText}>
+            <ListItem
+              button
+              key={item.displayText}
+              onClick={() => handleNavigation(item.link)}
+            >
               <ListItemText primary={item.displayText} />
             </ListItem>
           ))}
-        </List>
+        </StyledDrawerList>
       </Drawer>
     </React.Fragment>
   )

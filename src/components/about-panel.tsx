@@ -1,21 +1,38 @@
 import React from "react"
-import Grid from "@material-ui/core/Grid"
-import Typography from "@material-ui/core/Typography"
-import Button from "@material-ui/core/Button"
+import Grid from "@mui/material/Grid"
+import Typography from "@mui/material/Typography"
+import Button from "@mui/material/Button"
 import Image from "./image"
-import Hidden from "@material-ui/core/Hidden"
+import Hidden from "@mui/material/Hidden"
 import Bar from "./bar"
+import { useTheme } from "@mui/material/styles"
+import { useMediaQuery } from "@mui/material"
 
 const AboutPanel = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+
+  const handleLearnMoreClick = () => {
+    console.log("About Learn More button clicked")
+    alert("Learn more about our healthcare providers!")
+  }
+
   return (
-    <Grid container spacing={3} style={{ minHeight: 500 }}>
+    <Grid
+      container
+      spacing={isMobile ? 2 : 3}
+      style={{
+        minHeight: isMobile ? 400 : 500,
+        padding: isMobile ? "20px 10px" : "40px 20px",
+      }}
+    >
       <Hidden xsDown>
         <Grid
           item={true}
           sm={6}
           container
-          direction="column"
-          justify="center"
+          flexDirection="column"
+          justifyContent="center"
           alignItems="flex-start"
           style={{ padding: 10 }}
         >
@@ -32,28 +49,49 @@ const AboutPanel = () => {
         xs={12}
         sm={6}
         container
-        direction="column"
-        justify="center"
-        alignItems="flex-start"
-        style={{ paddingLeft: 40, paddingRight: 40 }}
+        flexDirection="column"
+        justifyContent="center"
+        alignItems={isMobile ? "center" : "flex-start"}
+        style={{
+          paddingLeft: isMobile ? 20 : 40,
+          paddingRight: isMobile ? 20 : 40,
+          textAlign: isMobile ? "center" : "left",
+        }}
       >
-        <Typography variant="h4" color="inherit">
+        <Typography
+          variant="h4"
+          color="inherit"
+          style={{
+            fontSize: isMobile ? "1.75rem" : "2.125rem",
+            marginBottom: 10,
+          }}
+        >
           Leading healthcare providers
         </Typography>
         <Bar />
         <Typography
           variant="subtitle1"
-          style={{ marginBottom: 30, marginTop: 20 }}
+          style={{
+            marginBottom: 30,
+            marginTop: 20,
+            fontSize: isMobile ? "1rem" : "1.25rem",
+          }}
         >
           We provide progressive, and affordable healthcare, accessible on
-          mobile and online for everyone. To us, it’s not just work. We take
+          mobile and online for everyone. To us, it's not just work. We take
           pride in the solutions we deliver
         </Typography>
-        <Button variant="outlined" color="primary" size="large">
+        <Button
+          variant="outlined"
+          color="primary"
+          size={isMobile ? "medium" : "large"}
+          onClick={handleLearnMoreClick}
+        >
           Learn More
         </Button>
       </Grid>
     </Grid>
   )
 }
+
 export default AboutPanel
