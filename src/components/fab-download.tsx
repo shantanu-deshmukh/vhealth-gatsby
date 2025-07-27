@@ -1,20 +1,18 @@
 import React from "react"
-import useScrollTrigger from "@material-ui/core/useScrollTrigger"
-import makeStyles from "@material-ui/core/styles/makeStyles"
-import Zoom from "@material-ui/core/Zoom"
-import Fab from "@material-ui/core/Fab"
-import GetAppIcon from "@material-ui/icons/GetApp"
+import useScrollTrigger from "@mui/material/useScrollTrigger"
+import { styled } from "@mui/material/styles"
+import Zoom from "@mui/material/Zoom"
+import Fab from "@mui/material/Fab"
+import GetAppIcon from "@mui/icons-material/GetApp"
+import Link from "@mui/material/Link"
 
-const useStyles = makeStyles(theme => ({
-  fab: {
-    position: "fixed",
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
-  },
+const StyledFab = styled(Fab)(({ theme }) => ({
+  position: "fixed",
+  bottom: theme.spacing(2),
+  right: theme.spacing(2),
 }))
 
 const FabDownload = () => {
-  const classes = useStyles()
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 100,
@@ -22,15 +20,16 @@ const FabDownload = () => {
 
   return (
     <Zoom in={trigger}>
-      <Fab
-        className={classes.fab}
-        color="secondary"
-        size="small"
+      <Link
         href="https://github.com/shantanu-deshmukh/vhealth-gatsby"
         target="_blank"
+        rel="noopener noreferrer"
+        sx={{ textDecoration: "none" }}
       >
-        <GetAppIcon />
-      </Fab>
+        <StyledFab color="secondary" size="small">
+          <GetAppIcon />
+        </StyledFab>
+      </Link>
     </Zoom>
   )
 }

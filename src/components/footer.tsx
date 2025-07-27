@@ -1,12 +1,17 @@
 import React from "react"
-import Grid from "@material-ui/core/Grid"
-import Typography from "@material-ui/core/Typography"
-import Box from "@material-ui/core/Box"
-import Hidden from "@material-ui/core/Hidden"
-import Link from "@material-ui/core/Link"
+import Grid from "@mui/material/Grid"
+import Typography from "@mui/material/Typography"
+import Box from "@mui/material/Box"
+import Hidden from "@mui/material/Hidden"
+import Link from "@mui/material/Link"
 import FabDownload from "./fab-download"
+import { useTheme } from "@mui/material/styles"
+import { useMediaQuery } from "@mui/material"
 
 const Footer = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+
   const footerLinks = [
     {
       title: "Company",
@@ -48,8 +53,9 @@ const Footer = () => {
           style={{
             margin: `0 auto`,
             maxWidth: 960,
-            minHeight: 250,
+            minHeight: isMobile ? 200 : 250,
             color: "#FFF",
+            padding: isMobile ? "20px 10px" : "40px 20px",
           }}
         >
           <Grid
@@ -57,18 +63,41 @@ const Footer = () => {
             sm={6}
             item
             container
-            direction="column"
-            justify="space-evenly"
-            style={{ padding: 10 }}
+            flexDirection="column"
+            justifyContent="space-evenly"
+            style={{
+              padding: isMobile ? 10 : 20,
+              textAlign: isMobile ? "center" : "left",
+            }}
           >
-            <Typography variant="h4" color="inherit">
+            <Typography
+              variant="h4"
+              color="inherit"
+              style={{
+                fontSize: isMobile ? "1.75rem" : "2.125rem",
+                marginBottom: isMobile ? 10 : 20,
+              }}
+            >
               vHealth
             </Typography>
-            <Typography variant="body2" color="inherit">
+            <Typography
+              variant="body2"
+              color="inherit"
+              style={{
+                fontSize: isMobile ? "0.875rem" : "1rem",
+                marginBottom: isMobile ? 10 : 20,
+              }}
+            >
               vHealth provides progressive, and affordable healthcare,
               accessible on mobile and online for everyone
             </Typography>
-            <Typography variant="body2" color="inherit">
+            <Typography
+              variant="body2"
+              color="inherit"
+              style={{
+                fontSize: isMobile ? "0.75rem" : "0.875rem",
+              }}
+            >
               ©vHealth PTY LTD 2020. All rights reserved
             </Typography>
           </Grid>
@@ -80,8 +109,8 @@ const Footer = () => {
                 xs={12}
                 sm={2}
                 container
-                direction="column"
-                justify="space-evenly"
+                flexDirection="column"
+                justifyContent="space-evenly"
                 key={footerMenu.title}
               >
                 <Typography variant="subtitle1" color="inherit">
@@ -104,14 +133,22 @@ const Footer = () => {
             margin: `0 auto`,
             maxWidth: 960,
             color: "#FFF",
-            paddingLeft: 5,
-            paddingRight: 5,
+            paddingLeft: isMobile ? 10 : 20,
+            paddingRight: isMobile ? 10 : 20,
           }}
-          direction="row"
-          justify="space-between"
+          flexDirection={isMobile ? "column" : "row"}
+          justifyContent="space-between"
           alignItems="center"
         >
-          <Typography variant="body2" color="inherit">
+          <Typography
+            variant="body2"
+            color="inherit"
+            style={{
+              fontSize: isMobile ? "0.75rem" : "0.875rem",
+              marginBottom: isMobile ? 5 : 0,
+              textAlign: isMobile ? "center" : "left",
+            }}
+          >
             Created by{" "}
             <a
               href="https://shantanudeshmukh.com/"
@@ -121,7 +158,14 @@ const Footer = () => {
               Shantanu Deshmukh
             </a>
           </Typography>
-          <Typography variant="body2" color="inherit">
+          <Typography
+            variant="body2"
+            color="inherit"
+            style={{
+              fontSize: isMobile ? "0.75rem" : "0.875rem",
+              textAlign: isMobile ? "center" : "left",
+            }}
+          >
             Designed by
             <a
               href="https://dribbble.com/slabdsgn"
@@ -137,4 +181,5 @@ const Footer = () => {
     </React.Fragment>
   )
 }
+
 export default Footer

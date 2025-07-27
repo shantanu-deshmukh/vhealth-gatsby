@@ -1,12 +1,11 @@
 import React from "react"
-import Card from "@material-ui/core/Card"
-import CardMedia from "@material-ui/core/CardMedia"
-import CardContent from "@material-ui/core/CardContent"
-import Typography from "@material-ui/core/Typography"
-import CardActions from "@material-ui/core/CardActions"
-import Button from "@material-ui/core/Button"
+import Card from "@mui/material/Card"
+import CardContent from "@mui/material/CardContent"
+import Typography from "@mui/material/Typography"
+import CardActions from "@mui/material/CardActions"
+import Button from "@mui/material/Button"
 import Image from "./image"
-import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt"
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt"
 
 interface IProps {
   article: Article
@@ -20,11 +19,17 @@ interface Article {
 }
 
 const ArticleCard = ({ article, ...props }: IProps) => {
+  const handleReadMoreClick = () => {
+    console.log(`Read More clicked for: ${article.title}`)
+    // Add your read more logic here
+    alert(`Reading article: ${article.title}`)
+  }
+
   return (
     <Card>
-      <CardMedia image={article.image}>
+      <div style={{ height: 200, overflow: "hidden" }}>
         <Image alt={article.title} filename={article.image} />
-      </CardMedia>
+      </div>
       <CardContent style={{ textAlign: "start" }}>
         <Typography variant="h6" color="inherit">
           {article.title}
@@ -34,7 +39,7 @@ const ArticleCard = ({ article, ...props }: IProps) => {
         </Typography>
       </CardContent>
       <CardActions style={{ paddingLeft: 20 }}>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={handleReadMoreClick}>
           Read More <ArrowRightAltIcon style={{ marginLeft: 5 }} />
         </Button>
       </CardActions>

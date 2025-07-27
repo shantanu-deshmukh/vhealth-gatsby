@@ -1,40 +1,74 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-// Note: You can change "images" to whatever you'd like.
+interface ImageProps {
+  filename: string
+  alt: string
+}
 
-const Image = (props: { filename: any; alt: string | undefined }) => (
-  <StaticQuery
-    query={graphql`
-      query {
-        images: allFile {
-          edges {
-            node {
-              relativePath
-              name
-              childImageSharp {
-                fluid(maxWidth: 600) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+const Image: React.FC<ImageProps> = ({ filename, alt }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      images: allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+        edges {
+          node {
+            relativePath
+            name
+            childImageSharp {
+              gatsbyImageData(width: 600, layout: CONSTRAINED)
             }
           }
         }
       }
-    `}
-    render={data => {
-      const image = data.images.edges.find(n => {
-        return n.node.relativePath.includes(props.filename)
-      })
-      if (!image) {
-        return null
-      }
+    }
+  `)
 
-      //const imageSizes = image.node.childImageSharp.sizes; sizes={imageSizes}
-      return <Img alt={props.alt} fluid={image.node.childImageSharp.fluid} />
-    }}
-  />
-)
+  const image = data.images.edges.find((n: any) => {
+    return (
+      n.node.relativePath === filename ||
+      n.node.name === filename.replace(/\.[^/.]+$/, "")
+    )
+  })
+
+  if (!image) {
+    console.warn(`Image not found: ${filename}`)
+    return (
+      <div
+        style={{
+          width: 100,
+          height: 100,
+          backgroundColor: "#f0f0f0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <span style={{ fontSize: "12px", color: "#666" }}>Image not found</span>
+      </div>
+    )
+  }
+
+  const gatsbyImage = getImage(image.node.childImageSharp)
+  if (!gatsbyImage) {
+    console.warn(`Gatsby image not generated for: ${filename}`)
+    return (
+      <div
+        style={{
+          width: 100,
+          height: 100,
+          backgroundColor: "#f0f0f0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <span style={{ fontSize: "12px", color: "#666" }}>Image error</span>
+      </div>
+    )
+  }
+
+  return <GatsbyImage image={gatsbyImage} alt={alt || ""} />
+}
 
 export default Image

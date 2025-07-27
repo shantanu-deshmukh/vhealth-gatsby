@@ -12,7 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 import Footer from "./footer"
-import Box from "@material-ui/core/Box"
+import Box from "@mui/material/Box"
 
 interface Props {
   children?: any
