@@ -8,7 +8,7 @@ Open Source web template for a Healthcare Startup. It's built using gatsby but c
 
 ![Demo vHealth](demo.gif)
 
-[See Live Preview >> ](https://vhealth.openthemes.dev)
+[See Live Preview >> ](https://shantanu-deshmukh.github.io/vhealth-gatsby/)
 
 ## 🚀 Get Up and Running in 5 Minutes
 
