@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/vhealth-gatsby",
   siteMetadata: {
     title: `Vhealth - Open source gatsby template`,
     description: `Free website template for a health care startup.`,

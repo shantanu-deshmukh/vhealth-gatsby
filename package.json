@@ -28,6 +28,7 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.3"
   },
@@ -36,6 +37,7 @@
   ],
   "license": "0BSD",
   "scripts": {
+    "deploy": "npm run build --prefix-paths && gh-pages -d public",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
